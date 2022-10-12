@@ -23,7 +23,7 @@ function fibonacci(n) {
   if (n <= 2) {
     return 1
   }
-  return fibonacci(n - 1) + fibonacci(n - 2)
+  return fibonacci(n - 1) + fibonacci(n - 2) // current fib = previous fib + previousprevious fib
   // 55 = 34-21-13-8-5-3-2-1-1 n =10
   // 34 = 21-13-8-5-3-2-1-1    n = 9
   // 21 = 13-8-5-3-2-1-1       n = 8
