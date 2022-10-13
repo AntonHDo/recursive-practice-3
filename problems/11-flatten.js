@@ -19,18 +19,22 @@ plan:
 if array = array[0], return array
 else
 ***********************************************************************/
+// Davids answer
+function flatten(arr) {
+    const res = []
+    arr.forEach(el => {
+        if (Array.isArray(el)) {
+            res.push(...flatten(el))
+        } else {
+            res.push(el);
+        }
+    });
+    return res;
+}
 
-// function flatten(arr) {
-
-//   if (arr === []) {
-//     return []
-//   }
-//   return flatten(arr.pop()) + arr
-// }
-
-// flatten([]); // []
-// flatten([1, 2]); // [1, 2]
-// flatten([1, [2, [3]]]); // [1, 2, 3]
+console.log(flatten([])); // []
+console.log(flatten([1, 2])); // [1, 2]
+console.log(flatten([1, [2, [3]]])); // [1, 2, 3]
 
 // /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 // module.exports = flatten;

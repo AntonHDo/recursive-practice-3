@@ -19,26 +19,45 @@ fibonacci(4); // 3
 fibonacci(10); // 55
 ***********************************************************************/
 
-function fibonacci(n) {
-  if (n <= 2) {
-    return 1
-  }
-  return fibonacci(n - 1) + fibonacci(n - 2) // current fib = previous fib + previousprevious fib
-  // 55 = 34-21-13-8-5-3-2-1-1 n =10
-  // 34 = 21-13-8-5-3-2-1-1    n = 9
-  // 21 = 13-8-5-3-2-1-1       n = 8
-  // 13 = 8-5-3-2-1-1          n = 7
-  // 8 = 5-3-2-1-1             n = 6
-  // 5 = 3-2-1-1               n = 5
-  // 3 = 2-1-1                 n = 4
-  // 2 = 1-1                   n = 3
-  // 1 = 1                     n = 2
-  // 1=                        n = 1
+// davids answers
+
+// function fibonacci(n) {
+//   if (n <= 2) return 1;
+//   return fibonacci(n - 2) + fibonacci(n - 1)
+// }
+// davids answers with memoization
+function fibonacci(n, memo = {}) {
+  if (memo[n] !== undefined) return memo[n]
+  if (n <= 2) return 1;
+  memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo);
+  return memo[n];
 }
+
+
+
+
+
+
+// function fibonacci(n) {
+//   if (n <= 2) {
+//     return 1
+//   }
+//   return fibonacci(n - 1) + fibonacci(n - 2) // current fib = previous fib + previousprevious fib
+//   // 55 = 34-21-13-8-5-3-2-1-1 n =10
+//   // 34 = 21-13-8-5-3-2-1-1    n = 9
+//   // 21 = 13-8-5-3-2-1-1       n = 8
+//   // 13 = 8-5-3-2-1-1          n = 7
+//   // 8 = 5-3-2-1-1             n = 6
+//   // 5 = 3-2-1-1               n = 5
+//   // 3 = 2-1-1                 n = 4
+//   // 2 = 1-1                   n = 3
+//   // 1 = 1                     n = 2
+//   // 1=                        n = 1
+// }
 console.log(fibonacci(1)); // 1
 console.log(fibonacci(2)); // 1
 console.log(fibonacci(3)); // 2
 console.log(fibonacci(4)); // 3
-console.log(fibonacci(10)); // 55
+console.log(fibonacci(200)); // 55
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 module.exports = fibonacci;
